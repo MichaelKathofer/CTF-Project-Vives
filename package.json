@@ -66,6 +66,7 @@
     "whatwg-fetch": "~3.0.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.11.5"
+    "@babel/polyfill": "^7.11.5",
+    "tailwindcss": "^2.2.17"
   }
 }
