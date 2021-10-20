@@ -15,33 +15,33 @@
             <ul class="navbar-nav mr-auto">
                 {% for page in Plugins.user_menu_pages %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ page.route }}">{{ page.title }}</a>
+                        <a class="nav-link nav-link-user" href="{{ page.route }}">{{ page.title }}</a>
                     </li>
                 {% endfor %}
 
                 {% if Configs.account_visibility != 'admins' %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('users.listing') }}">Users</a>
+                        <a class="nav-link nav-link-user" href="{{ url_for('users.listing') }}">_Users</a>
                     </li>
                     {% if Configs.user_mode == 'teams' %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('teams.listing') }}">Teams</a>
+                        <a class="nav-link nav-link-user" href="{{ url_for('teams.listing') }}">_Teams</a>
                     </li>
                     {% endif %}
                 {% endif %}
 
                 {% if Configs.score_visibility != 'admins' %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('scoreboard.listing') }}">Scoreboard</a>
+                        <a class="nav-link nav-link-user" href="{{ url_for('scoreboard.listing') }}">_Scoreboard</a>
                     </li>
                 {% endif %}
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('challenges.listing') }}">Challenges</a>
+                    <a class="nav-link" href="{{ url_for('challenges.listing') }}">_Challenges</a>
                 </li>
             </ul>
 
-            <hr class="d-sm-flex d-md-flex d-lg-none">
+            <hr class="d-sm-flex d-md-flex d-lg-none bg-white">
 
             <ul class="navbar-nav ml-md-auto d-block d-sm-flex d-md-flex">
                 {% if authed() %}

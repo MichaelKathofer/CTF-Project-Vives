@@ -31,15 +31,34 @@
 	<main role="main">
 		{% block content %}
 		{% endblock %}
+		<div class="col-md-6 offset-md-3">
+			<img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="img/logo.png" />
+			<h3 class="text-center">
+				
+				<a href="https://github.com/ctfd"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
+			</h3>
+			<br>
+			<h4 class="text-center">
+				<a href="admin">Login</a> to participate in a CTF challenge
+			</h4>
+		</div>
 	</main>
 
-	<footer class="footer">
+	<footer class="footer ">
 		<div class="container text-center">
-			<a href="https://ctfd.io" class="text-secondary">
-				<small class="text-muted">VIVES University project</small>
+			<a href="https://www.vives.be/nl">
+				<p class="text-secondary" >VIVES University project</p>
 			</a>
 		</div>
 	</footer>
+	
+	<style id="theme-color">
+        :root {--theme-color: #df0321;}
+        .navbar{background-color: var(--theme-color) !important;}
+        .jumbotron{background-color: var(--theme-color) !important;}
+		.navbar-nav .nav-link {color: rgba(255, 255, 255, 0.9) !important; margin-left: 15px !important; font-weight: bold !important;} 
+		.footer {background-color: black;}
+    </style>
 
 	<script defer src="{{ url_for('views.themes', path='js/vendor.bundle.js') }}"></script>
 	<script defer src="{{ url_for('views.themes', path='js/core.js') }}"></script>
