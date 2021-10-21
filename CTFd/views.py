@@ -165,15 +165,18 @@ def setup():
 
             # Splice in our banner
             index = f"""<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="{default_ctf_banner_location}" />
-        <h3 class="text-center">
-            
-            <a href="https://github.com/ctfd"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-        </h3>
-        <br>
-    </div>
-</div>"""
+                            <div class="col-md-6 offset-md-3">
+                                <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="{default_ctf_banner_location}" />
+                                <h3 class="text-center">
+                                    View the GitHub repository 
+                                    <a href="https://github.com/ctfd"><i class="fab fa-github fa-2x" aria-hidden="true"></i>here</a>
+                                </h3>
+                                <br>
+                                <h4 class="text-center">
+                                    <a href="admin">Login</a> to participate in a CTF challenge
+                                </h4>
+                            </div>
+                        </div>"""
             page.content = index
 
             # Visibility
@@ -302,7 +305,7 @@ def settings():
 
     user = get_current_user()
     name = user.name
-    email = user.email
+    email = user.email                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
     website = user.website
     affiliation = user.affiliation
     country = user.country
