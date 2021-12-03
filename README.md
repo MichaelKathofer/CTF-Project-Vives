@@ -1,8 +1,7 @@
 
 ![HeroForVite](https://user-images.githubusercontent.com/56073279/144605529-2254339f-7956-4006-a254-2ddc914a0997.png)
 
-
-## This Project is based on the CTFd Framework
+This Project is based on the CTFd Framework. For the full documentation of changes visit my documentation page: https://michaelkathofer-ctf-report.netlify.app/
 
 ## What is CTFd?
 
