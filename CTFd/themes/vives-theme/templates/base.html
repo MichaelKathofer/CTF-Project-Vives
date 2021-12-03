@@ -17,10 +17,10 @@
 			'urlRoot': "{{ request.script_root }}",
 			'csrfNonce': "{{ Session.nonce }}",
 			'userMode': "{{ Configs.user_mode }}",
-			'userId': {{ Session.id }},
-			'start': {{ Configs.start | tojson }},
-			'end': {{ Configs.end | tojson }},
-			'theme_settings': {{ Configs.theme_settings | tojson }}
+			'userId': "{{ Session.id }}",
+			'start': "{{ Configs.start | tojson }}",
+			'end': "{{ Configs.end | tojson }}",
+			'theme_settings': "{{ Configs.theme_settings | tojson }}",
 		}
 	</script>
 	{{ Configs.theme_header }}
@@ -31,33 +31,92 @@
 	<main role="main">
 		{% block content %}
 		{% endblock %}
-		<div class="col-md-6 offset-md-3">
-			<img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="img/logo.png" />
-			<h3 class="text-center">
-				
-				<a href="https://github.com/ctfd"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-			</h3>
-			<br>
-			<h4 class="text-center">
-				<a href="admin">Login</a> to participate in a CTF challenge
-			</h4>
-		</div>
 	</main>
 
 	<footer class="footer ">
-		<div class="container text-center">
-			<a href="https://www.vives.be/nl">
-				<p class="text-secondary" >VIVES University project</p>
-			</a>
+		<div class="container footer-container">
+			<div class="footer-element">
+				<a href="https://www.vives.be/nl">
+					<p class="text-secondary" >VIVES University project</p>
+				</a>
+			</div>
+			<div class="footer-element">
+				<a href="/imprint" class="text-decoration-none text-light">
+					<p>Imprint</p>
+				</a>
+			</div>
+			<div class="footer-element">
+				<a href="mailto:michael.kathofer@gmail.com?subject=VIVES CTFd Plattform" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-light">
+					<p>Contact</p>
+				</a>
+			</div>	
+			{% if authed() %}
+				{% if is_admin() %}
+				<div class="footer-element">
+					<a href="/admin/tutorial" class="text-decoration-none text-light">
+						<p>Admin Tutorial</p>
+					</a>
+				</div>
+				{% endif %}
+			{% else %}
+			<div class="footer-element">
+				<a href="/tutorial" class="text-decoration-none text-light">
+					<p>User Tutorial</p>
+				</a>
+			</div>
+			{% endif %}
 		</div>
 	</footer>
 	
 	<style id="theme-color">
+		body {background-color: #04121F}
         :root {--theme-color: #df0321;}
-        .navbar{background-color: var(--theme-color) !important;}
-        .jumbotron{background-color: var(--theme-color) !important;}
-		.navbar-nav .nav-link {color: rgba(255, 255, 255, 0.9) !important; margin-left: 15px !important; font-weight: bold !important;} 
+        .navbar{background-color: var(--theme-color) !important; margin-bottom: 0px !important;}
+		.navbar-nav .nav-link {color: rgba(255, 255, 255, 0.9) !important; margin-left: 20px !important; font-weight: bold !important;} 
 		.footer {background-color: black;}
+		.hero {background-image: linear-gradient(180deg, #df0321, #ffffff) !important; margin-top: 60px !important; margin-bottom: 0px !important;height: 20px !important;}
+		.modal-content {border-radius: 20px !important; }
+		.close {background-color: #EFEEE8 !important; width: 50px !important;}	
+		.close:hover {background-color: #df0321 !important;}
+		.model-background {background: #EFEEE8 !important;}
+		.jumbotron {background-color: white !important;}
+		.bodyclass { margin: 0; font-family: 'Roboto Condensed', sans-serif; color: white; background: #04121F;}
+        section { position: relative; display: flex; flex-direction: column; align-items: center; min-height: 400px; padding: 60px 20vw;}
+		.spacerlayer { aspect-ratio: 960/300; width: 100%;}
+		.spacer{ width: 100vw; background-repeat: no-repeat; background-position: center; background-size: cover;}
+		#visual {width: 100%; height:100%; max-height:1000px;}
+		.video-container {margin-bottom: 100px; background-color: white; border-radius: 20px; padding:20px}
+		.red {background-color:#df0321; width: 100vw;}
+		.darkgrey {width: 100vw;}
+		.svg {width: 60vh; height: 100%;}
+		.heroText {margin-top:30px; align-items: center}
+		.heroSubheading {margin-top:10px; font-weight: bold;}
+		.getStarted-button {width: 18rem; height: 3rem; background-color:#ec6d7e; border-radius: 30px; color: rgb(0, 0, 0); font-size: 20px; font-weight: bold; text-decoration: none; margin:30px auto; display:block;}
+		.getStarted-button:hover {background-color:#b11b2f; transition: all .2s ease-in;}
+		.footer-container {text-align:center; }
+		.footer-element {margin: 0 10px; color: white; display:inline-block}
+		#progressBar {
+			width: 90%;
+			margin: 10px auto;
+			height: 22px;
+			}
+
+			#progressBar div {
+			height: 100%;
+			text-align: right;
+			padding: 0 10px;
+			line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+			width: 0;
+			background-color: #df0321;
+			box-sizing: border-box;
+}
+	
+		@media only screen and (max-width: 800px) {
+  			.svg {
+    			width: 30vh !important;
+  			}
+		}
+		
     </style>
 
 	<script defer src="{{ url_for('views.themes', path='js/vendor.bundle.js') }}"></script>

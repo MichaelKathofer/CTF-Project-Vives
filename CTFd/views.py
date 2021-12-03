@@ -164,9 +164,9 @@ def setup():
                 default_ctf_banner_location = url_for("views.files", path=f.location)
 
             # Splice in our banner
-            index = f"""<div class="row">
+            index = f"""<div class="jumbotron">
+                            <img class="" src="{default_ctf_banner_location}" />
                             <div class="col-md-6 offset-md-3">
-                                <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="{default_ctf_banner_location}" />
                                 <h3 class="text-center">
                                     View the GitHub repository 
                                     <a href="https://github.com/ctfd"><i class="fab fa-github fa-2x" aria-hidden="true"></i>here</a>
@@ -178,6 +178,7 @@ def setup():
                             </div>
                         </div>"""
             page.content = index
+
 
             # Visibility
             set_config(
