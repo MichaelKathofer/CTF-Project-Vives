@@ -23,6 +23,7 @@
 			<div class="challenge-tags text-center">
 				{% block tags %}
 					{% for tag in tags %}
+						<!-- Sorting for tags that start with timer-->
 						{% if tag.startswith('timer=') %}
 							<div class="border m-5 p-2 rounded-lg bg-white">
 								<div id="progressBar">
@@ -30,6 +31,7 @@
 								</div>	
 							</div>
 							<script>
+								// Using slice to cut off 'timer=' and everything unwanted after the two digits
 								var TimeInMinutes = ({{tag|tojson}}.slice(6,8))*60;
 							</script>
 						{% else %}
@@ -172,10 +174,13 @@
 	</div>
 </div>
 
+<!-- Section of the progress bar -->
 <script>
 	function progress(timeleft, timetotal, $element) {
-    	var progressBarWidth = timeleft * $element.width() / timetotal;
-    	$element.find('div').animate({ width: progressBarWidth }, 500).html(Math.floor(timeleft/60) + ":"+ timeleft%60);
+
+    	var widthProgress = timeleft * $element.width() / timetotal;
+
+    	$element.find('div').animate({ width: widthProgress }, 500).html(Math.floor(timeleft/60) + ":"+ timeleft%60);
     	if(timeleft > 0) {
         	setTimeout(function() {
             	progress(timeleft - 1, timetotal, $element);

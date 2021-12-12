@@ -8,6 +8,8 @@ import $ from "jquery";
 import CTFd from "../CTFd";
 import config from "../config";
 import hljs from "highlight.js";
+// added import to get user affiliation info
+import Challenges, Tracking, Users from CTFd.models;
 
 dayjs.extend(relativeTime);
 
@@ -17,6 +19,8 @@ let solves = [];
 
 const loadChal = id => {
   const chal = $.grep(challenges, chal => chal.id == id)[0];
+  // try to get user affiliation
+  const useraffiliation = Users.affiliation;
 
   if (chal.type === "hidden") {
     ezAlert({
@@ -26,8 +30,10 @@ const loadChal = id => {
     });
     return;
   }
-
-  displayChal(chal);
+  // new if condition to check if challange has any 'group' tag
+  if ((chal.tags.includes("group="))){
+    displayChal(chal);
+  }
 };
 
 const loadChalByName = name => {
